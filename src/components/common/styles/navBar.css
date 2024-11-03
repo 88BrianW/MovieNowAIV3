@@ -1,0 +1,82 @@
+@import "../../../data/styles.css";
+
+.nav-container {
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.navbar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 3vh;
+	z-index: 999;
+	width: 100%;
+	padding: 0 20px; /* Ensure some padding from the edges */
+	box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.nav-background {
+	width: 100%; /* Full width to accommodate responsiveness */
+	max-width: 300px; /* Set a maximum width to avoid stretching */
+	height: 40px;
+	background: #fff;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+	border-radius: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.nav-list {
+	display: flex;
+	justify-content: space-between; /* Evenly space items */
+	list-style: none;
+	align-items: center;
+	width: 100%; /* Full width to use available space */
+	margin: 20px; /* Remove unnecessary margins */
+	padding: 4px; /* Remove padding for better alignment */
+}
+
+.nav-item {
+	font-weight: bold;
+	font-size: 80%;
+}
+
+.nav-item.active a {
+	color: var(--link-color) !important;
+}
+
+.nav-item a {
+	text-decoration: none;
+	color: var(--primary-color);
+}
+
+.nav-item a:hover {
+	color: var(--link-color);
+	transition: color 0.3s ease-in-out;
+}
+
+@media (max-width: 600px) {
+	.navbar {
+		width: 90%; /* Adjusted for better mobile display */
+		font-size: 80%;
+		padding: 0; /* Remove extra padding on mobile */
+	}
+
+	.nav-background {
+		width: 100%; /* Full width on mobile */
+		height: 40px;
+	}
+
+	.nav-list {
+		justify-content: space-around; /* Evenly spaced on mobile */
+	}
+
+	.nav-item {
+		font-weight: bold;
+	}
+}
