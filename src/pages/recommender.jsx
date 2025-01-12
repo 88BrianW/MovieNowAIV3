@@ -6,7 +6,7 @@ import "./styles/recommender.css"; // You can create this CSS file for styling
 import axios from 'axios';
 
 const About = () => {
-	const [input, setInput] = useState("");
+	const [input, setInput] = useState("Can you recommend me a movie?"); // Default question
 	const [messages, setMessages] = useState([]);
 	const [responding, setResponding] = useState(false);
 
@@ -23,6 +23,7 @@ const About = () => {
 		const position = window.scrollY || window.pageYOffSet;
 		setScrollPosition(position);
 	};
+
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
@@ -49,7 +50,6 @@ const About = () => {
 			console.log(input);
 
 			try {
-				
 				const response = await fetch(window.location.origin + '/api/messages', {
 					method: 'POST',
 					headers: {
@@ -85,8 +85,6 @@ const About = () => {
 		}
 	};
 
-
-
 	return (
 		<React.Fragment>
 			<Helmet>
@@ -108,6 +106,12 @@ const About = () => {
 									{msg.text}
 								</div>
 							))}
+							{/* Loading dots show when responding is true */}
+							{responding && (
+								<div className="loading">
+									<span>.</span><span>.</span><span>.</span>
+								</div>
+							)}
 						</div>
 						<div className="input-container">
 							<input

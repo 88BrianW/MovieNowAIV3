@@ -11,7 +11,7 @@ const MovieCard = () => {
 		setLoading(true);
 		setError('');
 		try {
-			const response = await fetch('http://localhost:3001', {
+			const response = await fetch('http://localhost:3000', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -37,6 +37,8 @@ const MovieCard = () => {
 			const formattedTitle = title.replace(/ /g, '+');
 			console.log('Title:', formattedTitle);
 
+			console.log(process.env.REACT_APP_OMDB_API_KEY);
+
 			const response = await fetch(`http://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${process.env.REACT_APP_OMDB_API_KEY}`);
 			const data = await response.json();
 			if (data.Response === 'True') {
@@ -52,7 +54,6 @@ const MovieCard = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		sendMessageToDiscord("Sent mvoie data!");
 		fetchMovie();
 	};
 
@@ -86,7 +87,7 @@ const MovieCard = () => {
 			{movie && (
 				<div>
 					<h2>{movie.Title}</h2>
-					<p><strong>Year:</strong> {movie.Year}</p>
+					<p><strong>Years:</strong> {movie.Year}</p>
 					<p><strong>Rated:</strong> {movie.Rated}</p>
 					<p><strong>Released:</strong> {movie.Released}</p>
 					<p><strong>Runtime:</strong> {movie.Runtime}</p>
